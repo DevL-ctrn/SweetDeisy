@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sweet Deisy — Boleria</title>
+
+  <!-- Fontes e ícones -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <style>
+    *{box-sizing:border-box}
+    html,body{ font-family: Georgia, 'Times New Roman', Times, serif; background:rgb(253, 223, 228); height:100%}
+    body{display:flex; justify-content:center; margin:0 }
+
+    footer {
+      background-color: #fff;
+      color: black;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-weight: 400;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+    }
+
+    .social-icons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .social-icons a {
+      text-decoration: none;
+      width: 45px;
+      height: 45px;
+      border-radius:50%;
+      font-size:20px;
+      border: 3px solid black;
+      color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.5s ease;
+    }
+
+    .footer-col h4 { font-size: 1.7rem; margin-bottom: 0.5rem; font-weight: 700; }
+
+    .wrap{
+      width:100%;
+      min-height:750px;
+      border-radius:20px;
+      box-shadow: 0 18px 40px rgba(30,30,30,0.08);
+      border:1px solid rgba(0,0,0,0.03);
+    }
+
+    header.topbar{
+      position:relative;
+      padding:8px 14px 6px;
+      background-color: #fff;
+      padding-top:12px;
+    }
+    .top-inner{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      padding:6px 12px;
+    }
+    .top-inner .lang{
+      position:absolute;
+      right:40px;
+      font-size:12px;
+      color:var(--muted);
+      cursor:pointer;
+    }
+
+    .top-title{
+      font-family:'Great Vibes', cursive;
+      font-size:34px;
+      color:var(--brand);
+      letter-spacing:0.6px;
+      line-height:1;
+    }
+
+    .divider{
+      height:10px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-top:6px;
+      position:relative;
+    }
+    .divider::before{
+      content:"";
+      width:100%;
+      height:2px;
+      background:linear-gradient(90deg, rgba(107,62,54,0.08), rgba(107,62,54,0.06));
+      position:absolute;
+      left:0;
+      border-radius:2px;
+    }
+    .divider .dot{
+      width:10px; height:10px; border-radius:50%;
+      background:var(--brand);
+      border:3px solid #fff;
+      box-shadow:0 4px 12px rgba(107,62,54,0.12);
+      z-index:2;
+    }
+
+    .hero{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:12px;
+    }
+
+    .brand-title{
+      font-family:'Great Vibes', cursive;
+      font-size:26px;
+      color:var(--brand);
+      margin:0;
+    }
+
+    .location{
+      font-size:13px;
+      color:var(--muted);
+      margin-top:0;
+    }
+
+    .slogan{
+      font-size:14px;
+      color:#8a6f69;
+      font-style:italic;
+      margin-top:6px;
+    }
+
+    .actions{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:14px;
+      margin-bottom: 120px;
+    }
+
+    .actions a{
+      text-decoration:none;
+      color: black;
+    }
+
+    .btn{
+      width:92%;
+      max-width:560px;
+      padding:14px 18px;
+      border-radius:12px;
+      border:1px solid rgba(107,62,54,0.08);
+      background: white;
+      font-weight:600;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      box-shadow:0 8px 24px rgba(30,30,30,0.06);
+      cursor:pointer;
+      font-size:18px;
+      transition:transform .14s ease, box-shadow .14s ease;
+      text-decoration:none;
+      text-align: center;
+    }
+    .btn:hover{ transform:translateY(-4px); box-shadow:0 20px 48px rgba(30,30,30,0.09); }
+
+    .copyright{
+      font-size:12px;color:var(--muted);margin-top:8px;
+    }
+
+    @media (max-width:768px){
+      .top-title{ font-size:30px; }
+      .logo{ width:120px;height:120px; }
+      .brand-title{ font-size:22px; }
+      .btn{ font-size:16px; padding:12px; width:94%; font-family: 'Cabin', sans-serif;}
+      .social{ width:48px;height:48px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap" role="main">
+
+    <!-- HEADER -->
+    <header class="topbar" role="banner" aria-label="Cabeçalho Sweet Deisy">
+      <div class="top-inner">
+        
+        <div class="lang" aria-hidden="true" onclick="changeLang()">PT</div>
+      </div>
+      <div class="divider" aria-hidden="true"><span class="dot"></span></div>
+    </header>
+    <br><br>
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Apresentação">
+      <div class="logo" aria-hidden="true">
+        <a href="#"><img src="lg.jpg.jpg" style="width:150px;"></a>
+      </div>
+
+      <h3 class="brand-title">Sweet Deisy - Confeitaria</h3>
+
+      <div class="location">
+        <i class="fas fa-map-marker-alt"></i>
+        <span id="location-text">Marinha Grande — Leiria</span>
+      </div>
+      <br><br>
+    </section>
+
+    <!-- Botões -->
+    <section class="actions" aria-label="Ações">
+      <a href="menu.html" target="_blank" class="btn" id="menu-btn">Menu</a>
+      <button class="btn"><a href="informacoes.html" target="_blank" id="about-btn">Informações</a></button>
+      <button class="btn"><a href="https://wa.me/351910862703" target="_blank" id="order-btn">Encomende Aqui</a></button>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer" aria-labelledby="footer-title">
+      <div class="footer-col">
+        <div class="social-icons">
+          <a href="https://wa.me/351910862703"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://www.instagram.com/sweetdeisy.pt?igsh=MWJucDh6cW1veG1pdw=="><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@sweetdeisy4"><i class="fa-brands fa-tiktok"></i></a> 
+        </div> 
+        <br>
+        <div class="copyright" id="copyright">© 2025 SweetDeisy. Todos os direitos reservados.</div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    const translations = {
+      pt: {
+        
+        brand: "Sweet Deisy - Confeitaria",
+        location: "Marinha Grande — Leiria",
+        menu: "Menu",
+        about: "Informações",
+        order: "Encomende Aqui",
+        copyright: "© 2025 Sweet Deisy. Todos os direitos reservados."
+      },
+      en: {
+       
+        brand: "Sweet Deisy - Confectionery",
+        location: "Marinha Grande — Leiria",
+        menu: "Menu",
+        about: "Information",
+        order: "Order Here",
+        copyright: "© 2025 Sweet Deisy. All rights reserved."
+      }
+    };
+
+    let currentLang = "pt";
+
+    function changeLang() {
+      currentLang = currentLang === "pt" ? "en" : "pt";
+
+    
+      document.querySelector(".brand-title").textContent = translations[currentLang].brand;
+      document.getElementById("location-text").textContent = translations[currentLang].location;
+      document.getElementById("menu-btn").textContent = translations[currentLang].menu;
+      document.getElementById("about-btn").textContent = translations[currentLang].about;
+      document.getElementById("order-btn").textContent = translations[currentLang].order;
+      document.getElementById("copyright").textContent = translations[currentLang].copyright;
+
+      document.querySelector(".lang").textContent = currentLang.toUpperCase();
+    }
+  </script>
+</body>
+</html>
