@@ -14,8 +14,8 @@
 
   <style>
     *{box-sizing:border-box}
-    html,body{ font-family: Georgia, 'Times New Roman', Times, serif; background:rgb(253, 223, 228); height:100%}
-    body{display:flex; justify-content:center; margin:0 }
+    html,body{ font-family: Georgia, 'Times New Roman', Times, serif; background:rgb(253, 223, 228); height:100%; margin:0; padding:0}
+    body{display:flex; justify-content:center; margin:0; padding:0}
 
     footer {
       background-color: #fff;
@@ -53,10 +53,23 @@
 
     .wrap{
       width:100%;
-      min-height:750px;
+      min-height:100vh;
       border-radius:20px;
       box-shadow: 0 18px 40px rgba(30,30,30,0.08);
       border:1px solid rgba(0,0,0,0.03);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Força o conteúdo a crescer e o footer a descer */
+    .wrap > header,
+    .wrap > .hero,
+    .wrap > .actions {
+      flex-shrink: 0;
+    }
+    
+    .wrap > footer {
+      margin-top: auto;
     }
 
     header.topbar{
@@ -193,7 +206,7 @@
         
         <div class="lang" aria-hidden="true" onclick="changeLang()">PT</div>
       </div>
-      <div class="divider" aria-hidden="true"><span class="dot"></span></div>
+      
     </header>
     <br><br>
 
@@ -212,11 +225,10 @@
       <br><br>
     </section>
 
-    <!-- Botões -->
+    <!-- Botões - Botão de Informações REMOVIDO -->
     <section class="actions" aria-label="Ações">
       <a href="menu.html" target="_blank" class="btn" id="menu-btn">Menu</a>
-      <button class="btn"><a href="informacoes.html" target="_blank" id="about-btn">Informações</a></button>
-      <button class="btn"><a href="https://wa.me/351910862703" target="_blank" id="order-btn">Encomende Aqui</a></button>
+      <a href="https://wa.me/351910862703" target="_blank" class="btn" id="order-btn">Encomende Aqui</a>
     </section>
 
     <!-- Footer -->
@@ -241,7 +253,6 @@
         brand: "Sweet Deisy - Confeitaria",
         location: "Marinha Grande — Leiria",
         menu: "Menu",
-        about: "Informações",
         order: "Encomende Aqui",
         copyright: "© 2025 Sweet Deisy. Todos os direitos reservados."
       },
@@ -250,7 +261,6 @@
         brand: "Sweet Deisy - Confectionery",
         location: "Marinha Grande — Leiria",
         menu: "Menu",
-        about: "Information",
         order: "Order Here",
         copyright: "© 2025 Sweet Deisy. All rights reserved."
       }
@@ -265,7 +275,6 @@
       document.querySelector(".brand-title").textContent = translations[currentLang].brand;
       document.getElementById("location-text").textContent = translations[currentLang].location;
       document.getElementById("menu-btn").textContent = translations[currentLang].menu;
-      document.getElementById("about-btn").textContent = translations[currentLang].about;
       document.getElementById("order-btn").textContent = translations[currentLang].order;
       document.getElementById("copyright").textContent = translations[currentLang].copyright;
 
