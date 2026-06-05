@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="pt">
+<html lang="pt" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sweet Deisy</title>
+  <title>Sweet Deisy — Boleria</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet"/>
@@ -12,18 +12,191 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
   <style>
-    *{box-sizing:border-box}
-    html,body{ font-family: Georgia, 'Times New Roman', Times, serif; background:rgb(253, 223, 228); height:100%; margin:0; padding:0}
-    body{display:flex; justify-content:center; margin:0; padding:0}
+    /* ── VARIÁVEIS DE TEMA ── */
+    :root {
+      --bg:        rgb(253, 223, 228);
+      --surface:   #ffffff;
+      --text:      #000000;
+      --subtext:   #000000;
+      --border:    rgba(107,62,54,0.08);
+      --btn-bg:    #ffffff;
+      --btn-text:  #000000;
+      --footer-bg: #ffffff;
+      --input-bg:  #ffffff;
+      --input-border: #e8d8d5;
+      --modal-bg:  #ffffff;
+      --icon-border: #000000;
+      --icon-color:  #000000;
+      --circle-bg:   transparent;
+    }
 
+    [data-theme="dark"] {
+      --bg:        #1a1014;
+      --surface:   #2a1a1e;
+      --text:      #f0e8e6;
+      --subtext:   #c8b8b4;
+      --border:    rgba(255,255,255,0.08);
+      --btn-bg:    #2a1a1e;
+      --btn-text:  #f0e8e6;
+      --footer-bg: #1a1014;
+      --input-bg:  #1a1014;
+      --input-border: #4a2a2e;
+      --modal-bg:  #2a1a1e;
+      --icon-border: #f0e8e6;
+      --icon-color:  #f0e8e6;
+      --circle-bg:   #3a2226;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      background: var(--bg);
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      transition: background .3s ease;
+    }
+    body { display: flex; justify-content: center; }
+
+    /* ── WRAP ── */
+    .wrap {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg);
+      transition: background .3s ease;
+    }
+    .wrap > header,
+    .wrap > .hero,
+    .wrap > .actions { flex-shrink: 0; }
+    .wrap > footer { margin-top: auto; }
+
+    /* ── HEADER ── */
+    header.topbar {
+      position: relative;
+      background-color: var(--surface);
+      padding: 28px 14px 22px;
+      transition: background .3s ease;
+    }
+    .top-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 6px 12px;
+    }
+
+    /* Botão idioma */
+    .top-inner .lang {
+      position: absolute;
+      right: 40px;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: 'Poppins', 'Cabin', sans-serif;
+      background: #8b3a2c;
+      padding: 8px 18px;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      color: white;
+      letter-spacing: 0.5px;
+      border: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .top-inner .lang:hover { background: #6b2c20; transform: scale(0.96); }
+
+    /* Botão dark mode */
+    .dark-toggle {
+      position: absolute;
+      right: 110px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid var(--icon-border);
+      background: var(--circle-bg);
+      color: var(--text);
+      font-size: 17px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .dark-toggle:hover { transform: scale(0.94); opacity: 0.7; }
+
+    /* ── HERO ── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg);
+      margin-top: 60px;
+      transition: background .3s ease;
+    }
+
+    .brand-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 26px;
+      color: var(--text);
+      margin: 0;
+      transition: color .3s ease;
+    }
+
+    .location {
+      font-size: 13px;
+      color: var(--text);
+      margin-top: 0;
+      transition: color .3s ease;
+    }
+
+    /* ── ACTIONS ── */
+    .actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      padding-bottom: 60px;
+      margin-bottom: 0;
+      flex: 1;
+      background: var(--bg);
+      transition: background .3s ease;
+    }
+
+    .actions a { text-decoration: none; color: var(--btn-text); }
+
+    .btn {
+      width: 92%;
+      max-width: 560px;
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      font-weight: 600;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      box-shadow: 0 8px 24px rgba(30,30,30,0.06);
+      cursor: pointer;
+      font-size: 18px;
+      transition: transform .14s ease, box-shadow .14s ease, background .3s ease, color .3s ease;
+      text-decoration: none;
+      text-align: center;
+      display: inline-block;
+    }
+    .btn:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(30,30,30,0.12); }
+
+    /* ── FOOTER ── */
     footer {
-      background-color: #fff;
-      color: black;
+      background-color: var(--footer-bg);
+      color: var(--text);
       text-align: center;
       padding: 2rem 1rem;
       font-weight: 400;
       font-size: 0.9rem;
       letter-spacing: 0.05em;
+      transition: background .3s ease, color .3s ease;
     }
 
     .social-icons {
@@ -37,132 +210,25 @@
       text-decoration: none;
       width: 45px;
       height: 45px;
-      border-radius:50%;
-      font-size:20px;
-      border: 3px solid black;
-      color: black;
+      border-radius: 50%;
+      font-size: 20px;
+      border: 3px solid var(--icon-border);
+      color: var(--icon-color);
       display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      transition: all 0.5s ease;
+      transition: all 0.3s ease;
     }
 
-    .footer-col h4 { font-size: 1.7rem; margin-bottom: 0.5rem; font-weight: 700; }
-
-    .wrap{
-      width:100%;
-      min-height:100vh;
-      border-radius:0;
-      box-shadow: 0 18px 40px rgba(30,30,30,0.08);
-      border:1px solid rgba(0,0,0,0.03);
-      display: flex;
-      flex-direction: column;
-      background: rgb(253, 223, 228);
-    }
-
-    .wrap > header,
-    .wrap > .hero,
-    .wrap > .actions { flex-shrink: 0; }
-    .wrap > footer { margin-top: auto; }
-
-    header.topbar{
-      position:relative;
-      padding: 20px 14px 20px;
-      background-color: #fff;
-      padding-top: 28px;
-      padding-bottom: 22px;
-      border-radius: 0;
-    }
-    .top-inner{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      position:relative;
-      padding:6px 12px;
-    }
-    .top-inner .lang{
-      position:absolute;
-      right:40px;
-      font-size:14px;
-      font-weight: 500;
-      font-family: 'Poppins', 'Cabin', sans-serif;
-      background: #8b3a2c;
-      padding: 8px 18px;
-      border-radius: 40px;
-      cursor:pointer;
-      transition: all 0.25s ease;
-      color: white;
-      letter-spacing: 0.5px;
-      border: none;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .top-inner .lang:hover { background: #6b2c20; transform: scale(0.96); }
-
-    .top-title{
-      font-family:'Great Vibes', cursive;
-      font-size:34px;
-      color:#000;
-      letter-spacing:0.6px;
-      line-height:1;
-    }
-
-    .hero{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:12px;
-      background: rgb(253, 223, 228);
-      margin-top: 60px;
-    }
-
-    .brand-title{
-      font-family:'Great Vibes', cursive;
-      font-size:26px;
-      color:#000;
-      margin:0;
-    }
-
-    .location{ font-size:13px; color:#000; margin-top:0; }
-
-    .actions{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:14px;
-      padding-bottom: 60px; margin-bottom: 0; flex: 1;
-      background: rgb(253, 223, 228);
-    }
-
-    .actions a { text-decoration:none; color: black; }
-
-    .btn{
-      width:92%;
-      max-width:560px;
-      padding:14px 18px;
-      border-radius:12px;
-      border:1px solid rgba(107,62,54,0.08);
-      background: white;
-      font-weight:600;
-      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-      box-shadow:0 8px 24px rgba(30,30,30,0.06);
-      cursor:pointer;
-      font-size:18px;
-      transition:transform .14s ease, box-shadow .14s ease;
-      text-decoration:none;
-      text-align: center;
-      display: inline-block;
-    }
-    .btn:hover{ transform:translateY(-4px); box-shadow:0 20px 48px rgba(30,30,30,0.09); }
-
-    .copyright{ font-size:12px; color:#000; margin-top:8px; }
+    .copyright { font-size: 12px; color: var(--text); margin-top: 8px; }
 
     /* ── MODAL ── */
     #subscribe-modal {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.45);
+      background: rgba(0,0,0,0.55);
       z-index: 999;
       justify-content: center;
       align-items: center;
@@ -171,14 +237,15 @@
     #subscribe-modal.open { display: flex; }
 
     .modal-box {
-      background: white;
+      background: var(--modal-bg);
       border-radius: 20px;
       padding: 36px 28px 28px;
       width: 100%;
       max-width: 400px;
       text-align: center;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.18);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.25);
       animation: modalIn .25s ease;
+      transition: background .3s ease;
     }
     @keyframes modalIn {
       from { transform: translateY(20px); opacity: 0; }
@@ -188,30 +255,30 @@
     .modal-title {
       font-family: 'Great Vibes', cursive;
       font-size: 32px;
-      color: #000;
+      color: var(--text);
       margin: 0 0 6px;
     }
     .modal-sub {
       font-size: 13.5px;
-      color: #000;
+      color: var(--subtext);
       margin: 0 0 24px;
       line-height: 1.5;
       font-family: 'Poppins', sans-serif;
       font-weight: 300;
     }
-
     .modal-input {
       width: 100%;
       padding: 13px 16px;
-      border: 1.5px solid #e8d8d5;
+      border: 1.5px solid var(--input-border);
       border-radius: 10px;
       font-size: 15px;
       outline: none;
       font-family: Georgia, serif;
       box-sizing: border-box;
       margin-bottom: 12px;
-      transition: border-color .2s;
-      color: #000;
+      transition: border-color .2s, background .3s, color .3s;
+      color: var(--text);
+      background: var(--input-bg);
     }
     .modal-input:focus { border-color: #8b3a2c; }
 
@@ -241,35 +308,41 @@
       margin-top: 16px;
       background: none;
       border: none;
-      color: #000;
+      color: var(--subtext);
       font-size: 13px;
       cursor: pointer;
       font-family: 'Poppins', sans-serif;
-      transition: color .2s;
+      transition: opacity .2s;
     }
-    .modal-close:hover { color: #000; }
+    .modal-close:hover { opacity: 0.6; }
 
-    @media (max-width:768px){
-      .top-title{ font-size:30px; }
-      .logo{ width:120px; height:120px; }
-      .brand-title{ font-size:22px; }
-      .btn{ font-size:16px; padding:12px; width:94%; font-family: 'Cabin', sans-serif; }
-      header.topbar { padding: 16px 14px 16px; padding-top: 22px; padding-bottom: 18px; }
-      .top-inner .lang { right: 20px; padding: 6px 14px; font-size: 12px; }
+    @media (max-width: 768px) {
+      .brand-title { font-size: 22px; }
+      .btn { font-size: 16px; padding: 12px; width: 94%; font-family: 'Cabin', sans-serif; }
+      header.topbar { padding: 22px 14px 18px; }
+      .top-inner .lang { right: 16px; width: 36px; height: 36px; font-size: 11px; }
+      .dark-toggle { right: 90px; width: 36px; height: 36px; font-size: 15px; }
       .hero { margin-top: 40px; }
-      .actions { padding-bottom: 30px; margin-bottom: 0; }
+      .actions { padding-bottom: 30px; }
     }
   </style>
 </head>
 <body>
   <div class="wrap" role="main">
 
+    <!-- HEADER -->
     <header class="topbar" role="banner" aria-label="Cabeçalho Sweet Deisy">
       <div class="top-inner">
+        <!-- Botão dark mode -->
+        <button class="dark-toggle" aria-label="Alternar modo escuro" onclick="toggleDark()">
+          <i class="fas fa-moon" id="dark-icon"></i>
+        </button>
+        <!-- Botão idioma -->
         <button class="lang" aria-label="Trocar idioma" onclick="changeLang()">PT</button>
       </div>
     </header>
 
+    <!-- HERO -->
     <section class="hero" aria-label="Apresentação">
       <div class="logo" aria-hidden="true">
         <a href="#"><img src="lg.jpg.jpg" style="width:150px;"></a>
@@ -283,12 +356,14 @@
 
     <br><br>
 
+    <!-- BOTÕES -->
     <section class="actions" aria-label="Ações">
       <a href="menu.html" target="_blank" class="btn" id="menu-btn">Menu</a>
       <a href="https://wa.me/351910862703" target="_blank" class="btn" id="order-btn">Encomende Aqui</a>
       <a href="#" class="btn" id="subscribe-btn" onclick="openModal(); return false;">Subscreva-se</a>
     </section>
 
+    <!-- FOOTER -->
     <footer class="site-footer" aria-labelledby="footer-title">
       <div class="footer-col">
         <div class="social-icons">
@@ -303,9 +378,7 @@
 
   </div>
 
-  <!-- ══════════════════════════════════════
-       MODAL DE SUBSCRIÇÃO
-  ══════════════════════════════════════ -->
+  <!-- MODAL DE SUBSCRIÇÃO -->
   <div id="subscribe-modal" role="dialog" aria-modal="true" aria-label="Subscrição">
     <div class="modal-box">
       <p class="modal-title">Sweet Deisy</p>
@@ -320,30 +393,44 @@
       >
 
       <button class="modal-btn" id="modal-submit-btn" onclick="submitSubscription()">Subscrever</button>
-
       <p class="modal-msg" id="sub-msg"></p>
-
       <button class="modal-close" id="modal-close-btn" onclick="closeModal()">Fechar</button>
     </div>
   </div>
 
   <script>
     /* ─────────────────────────────────────────
-       ⚠️  CONFIGURAÇÃO DO GOOGLE FORMS
-       1. Vai a forms.google.com e cria um form com um campo "Email"
-       2. Clica nos 3 pontos → "Obter link pré-preenchido"
-       3. Preenche qualquer email → copia o link gerado
-       4. Do link extrai:
-          - FORM_ID  → a parte longa entre /e/ e /formResponse
-          - ENTRY_ID → o parâmetro "entry.XXXXXXXXX"
+       CONFIGURAÇÃO DO GOOGLE FORMS
+       Substitui FORM_ID e ENTRY_ID pelos teus
     ───────────────────────────────────────── */
-    const FORM_ID  = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"; // ← substitui
-    const ENTRY_ID = "entry.XXXXXXXXX";                                      // ← substitui
+    const FORM_ID  = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+    const ENTRY_ID = "entry.XXXXXXXXX";
+
+    /* ── DARK MODE ── */
+    function toggleDark() {
+      const html = document.documentElement;
+      const icon = document.getElementById("dark-icon");
+      const isDark = html.getAttribute("data-theme") === "dark";
+      html.setAttribute("data-theme", isDark ? "light" : "dark");
+      icon.className = isDark ? "fas fa-moon" : "fas fa-sun";
+      localStorage.setItem("theme", isDark ? "light" : "dark");
+    }
+
+    // Restaurar tema guardado
+    (function() {
+      const saved = localStorage.getItem("theme");
+      if (saved === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+        document.addEventListener("DOMContentLoaded", () => {
+          const icon = document.getElementById("dark-icon");
+          if (icon) icon.className = "fas fa-sun";
+        });
+      }
+    })();
 
     /* ── MODAL ── */
     function openModal() {
-      const modal = document.getElementById("subscribe-modal");
-      modal.classList.add("open");
+      document.getElementById("subscribe-modal").classList.add("open");
       setTimeout(() => document.getElementById("sub-email").focus(), 100);
       document.getElementById("sub-msg").textContent = "";
       document.getElementById("sub-msg").style.color = "";
@@ -355,7 +442,6 @@
       document.getElementById("sub-msg").textContent = "";
     }
 
-    // Fecha ao clicar fora
     document.getElementById("subscribe-modal").addEventListener("click", function(e) {
       if (e.target === this) closeModal();
     });
@@ -405,27 +491,27 @@
     /* ── TRADUÇÕES ── */
     const translations = {
       pt: {
-        brand:     "Sweet Deisy - Confeitaria",
-        location:  "Marinha Grande — Leiria",
-        menu:      "Menu",
-        order:     "Encomende Aqui",
-        subscribe: "Subscreva-se",
-        copyright: "© 2026 Sweet Deisy. Todos os direitos reservados.",
-        modalSub:  "Recebe novidades, promoções e novos produtos em primeira mão.",
-        modalBtn:  "Subscrever",
-        modalClose:"Fechar",
+        brand:       "Sweet Deisy - Confeitaria",
+        location:    "Marinha Grande — Leiria",
+        menu:        "Menu",
+        order:       "Encomende Aqui",
+        subscribe:   "Subscreva-se",
+        copyright:   "© 2026 Sweet Deisy. Todos os direitos reservados.",
+        modalSub:    "Recebe novidades, promoções e novos produtos em primeira mão.",
+        modalBtn:    "Subscrever",
+        modalClose:  "Fechar",
         placeholder: "O teu email"
       },
       en: {
-        brand:     "Sweet Deisy - Confectionery",
-        location:  "Marinha Grande — Leiria",
-        menu:      "Menu",
-        order:     "Order Here",
-        subscribe: "Subscribe",
-        copyright: "© 2026 Sweet Deisy. All rights reserved.",
-        modalSub:  "Get news, promotions and new products first.",
-        modalBtn:  "Subscribe",
-        modalClose:"Close",
+        brand:       "Sweet Deisy - Confectionery",
+        location:    "Marinha Grande — Leiria",
+        menu:        "Menu",
+        order:       "Order Here",
+        subscribe:   "Subscribe",
+        copyright:   "© 2026 Sweet Deisy. All rights reserved.",
+        modalSub:    "Get news, promotions and new products first.",
+        modalBtn:    "Subscribe",
+        modalClose:  "Close",
         placeholder: "Your email"
       }
     };
@@ -435,18 +521,16 @@
     function changeLang() {
       currentLang = currentLang === "pt" ? "en" : "pt";
       const t = translations[currentLang];
-
-      document.querySelector(".brand-title").textContent       = t.brand;
-      document.getElementById("location-text").textContent     = t.location;
-      document.getElementById("menu-btn").textContent          = t.menu;
-      document.getElementById("order-btn").textContent         = t.order;
-      document.getElementById("subscribe-btn").textContent     = t.subscribe;
-      document.getElementById("copyright").textContent         = t.copyright;
-      document.getElementById("modal-sub-text").textContent    = t.modalSub;
-      document.getElementById("modal-submit-btn").textContent  = t.modalBtn;
-      document.getElementById("modal-close-btn").textContent   = t.modalClose;
-      document.getElementById("sub-email").placeholder         = t.placeholder;
-
+      document.querySelector(".brand-title").textContent      = t.brand;
+      document.getElementById("location-text").textContent    = t.location;
+      document.getElementById("menu-btn").textContent         = t.menu;
+      document.getElementById("order-btn").textContent        = t.order;
+      document.getElementById("subscribe-btn").textContent    = t.subscribe;
+      document.getElementById("copyright").textContent        = t.copyright;
+      document.getElementById("modal-sub-text").textContent   = t.modalSub;
+      document.getElementById("modal-submit-btn").textContent = t.modalBtn;
+      document.getElementById("modal-close-btn").textContent  = t.modalClose;
+      document.getElementById("sub-email").placeholder        = t.placeholder;
       document.querySelector(".lang").textContent = currentLang.toUpperCase();
     }
   </script>
