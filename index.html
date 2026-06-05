@@ -3,9 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sweet Deisy</title>
+  <title>Sweet Deisy — Boleria</title>
 
-  <!-- Fontes e ícones -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;600&display=swap" rel="stylesheet">
@@ -64,13 +63,8 @@
 
     .wrap > header,
     .wrap > .hero,
-    .wrap > .actions {
-      flex-shrink: 0;
-    }
-    
-    .wrap > footer {
-      margin-top: auto;
-    }
+    .wrap > .actions { flex-shrink: 0; }
+    .wrap > footer { margin-top: auto; }
 
     header.topbar{
       position:relative;
@@ -103,42 +97,14 @@
       border: none;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    .top-inner .lang:hover {
-      background: #6b2c20;
-      transform: scale(0.96);
-    }
+    .top-inner .lang:hover { background: #6b2c20; transform: scale(0.96); }
 
     .top-title{
       font-family:'Great Vibes', cursive;
       font-size:34px;
-      color:var(--brand);
+      color:#000;
       letter-spacing:0.6px;
       line-height:1;
-    }
-
-    .divider{
-      height:10px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      margin-top:6px;
-      position:relative;
-    }
-    .divider::before{
-      content:"";
-      width:100%;
-      height:2px;
-      background:linear-gradient(90deg, rgba(107,62,54,0.08), rgba(107,62,54,0.06));
-      position:absolute;
-      left:0;
-      border-radius:2px;
-    }
-    .divider .dot{
-      width:10px; height:10px; border-radius:50%;
-      background:var(--brand);
-      border:3px solid #fff;
-      box-shadow:0 4px 12px rgba(107,62,54,0.12);
-      z-index:2;
     }
 
     .hero{
@@ -146,43 +112,29 @@
       flex-direction:column;
       align-items:center;
       gap:12px;
-      background: transparent;
+      background: rgb(253, 223, 228);
       margin-top: 60px;
     }
 
     .brand-title{
       font-family:'Great Vibes', cursive;
       font-size:26px;
-      color:var(--brand);
+      color:#000;
       margin:0;
     }
 
-    .location{
-      font-size:13px;
-      color:var(--muted);
-      margin-top:0;
-    }
-
-    .slogan{
-      font-size:14px;
-      color:#8a6f69;
-      font-style:italic;
-      margin-top:6px;
-    }
+    .location{ font-size:13px; color:#000; margin-top:0; }
 
     .actions{
       display:flex;
       flex-direction:column;
       align-items:center;
       gap:14px;
-      margin-bottom: 80px;
-      background: transparent;
+      padding-bottom: 60px; margin-bottom: 0; flex: 1;
+      background: rgb(253, 223, 228);
     }
 
-    .actions a{
-      text-decoration:none;
-      color: black;
-    }
+    .actions a { text-decoration:none; color: black; }
 
     .btn{
       width:92%;
@@ -203,101 +155,278 @@
     }
     .btn:hover{ transform:translateY(-4px); box-shadow:0 20px 48px rgba(30,30,30,0.09); }
 
-    .copyright{
-      font-size:12px;color:var(--muted);margin-top:8px;
+    .copyright{ font-size:12px; color:#000; margin-top:8px; }
+
+    /* ── MODAL ── */
+    #subscribe-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
     }
+    #subscribe-modal.open { display: flex; }
+
+    .modal-box {
+      background: white;
+      border-radius: 20px;
+      padding: 36px 28px 28px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.18);
+      animation: modalIn .25s ease;
+    }
+    @keyframes modalIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+
+    .modal-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 32px;
+      color: #000;
+      margin: 0 0 6px;
+    }
+    .modal-sub {
+      font-size: 13.5px;
+      color: #000;
+      margin: 0 0 24px;
+      line-height: 1.5;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+    }
+
+    .modal-input {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1.5px solid #e8d8d5;
+      border-radius: 10px;
+      font-size: 15px;
+      outline: none;
+      font-family: Georgia, serif;
+      box-sizing: border-box;
+      margin-bottom: 12px;
+      transition: border-color .2s;
+      color: #000;
+    }
+    .modal-input:focus { border-color: #8b3a2c; }
+
+    .modal-btn {
+      width: 100%;
+      padding: 13px;
+      background: #8b3a2c;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Gill Sans', sans-serif;
+      letter-spacing: 0.5px;
+      transition: background .2s, transform .14s;
+    }
+    .modal-btn:hover { background: #6b2c20; transform: scale(0.98); }
+
+    .modal-msg {
+      font-size: 13px;
+      margin: 10px 0 0;
+      min-height: 18px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .modal-close {
+      margin-top: 16px;
+      background: none;
+      border: none;
+      color: #000;
+      font-size: 13px;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      transition: color .2s;
+    }
+    .modal-close:hover { color: #000; }
 
     @media (max-width:768px){
       .top-title{ font-size:30px; }
-      .logo{ width:120px;height:120px; }
+      .logo{ width:120px; height:120px; }
       .brand-title{ font-size:22px; }
-      .btn{ font-size:16px; padding:12px; width:94%; font-family: 'Cabin', sans-serif;}
-      .social{ width:48px;height:48px; }
-      header.topbar {
-        padding: 16px 14px 16px;
-        padding-top: 22px;
-        padding-bottom: 18px;
-      }
-      .top-inner .lang {
-        right: 20px;
-        padding: 6px 14px;
-        font-size: 12px;
-      }
-      .hero {
-        margin-top: 40px;
-      }
-      .actions {
-        margin-bottom: 30px;
-      }
+      .btn{ font-size:16px; padding:12px; width:94%; font-family: 'Cabin', sans-serif; }
+      header.topbar { padding: 16px 14px 16px; padding-top: 22px; padding-bottom: 18px; }
+      .top-inner .lang { right: 20px; padding: 6px 14px; font-size: 12px; }
+      .hero { margin-top: 40px; }
+      .actions { padding-bottom: 30px; margin-bottom: 0; }
     }
   </style>
 </head>
 <body>
   <div class="wrap" role="main">
 
-    <!-- HEADER - 100% retangular sem curvas -->
     <header class="topbar" role="banner" aria-label="Cabeçalho Sweet Deisy">
       <div class="top-inner">
         <button class="lang" aria-label="Trocar idioma" onclick="changeLang()">PT</button>
       </div>
-      
     </header>
 
-    <!-- HERO -->
     <section class="hero" aria-label="Apresentação">
       <div class="logo" aria-hidden="true">
         <a href="#"><img src="lg.jpg.jpg" style="width:150px;"></a>
       </div>
-
       <h3 class="brand-title">Sweet Deisy - Confeitaria</h3>
-
       <div class="location">
         <i class="fas fa-map-marker-alt"></i>
         <span id="location-text">Marinha Grande — Leiria</span>
       </div>
     </section>
+
     <br><br>
-    <!-- Botões - Botão de Informações REMOVIDO -->
+
     <section class="actions" aria-label="Ações">
       <a href="menu.html" target="_blank" class="btn" id="menu-btn">Menu</a>
       <a href="https://wa.me/351910862703" target="_blank" class="btn" id="order-btn">Encomende Aqui</a>
-      <a href="" target="_blank" class="btn" id="subscribe-btn">Subscreva-se</a>
+      <a href="#" class="btn" id="subscribe-btn" onclick="openModal(); return false;">Subscreva-se</a>
     </section>
 
-    <!-- Footer -->
     <footer class="site-footer" aria-labelledby="footer-title">
       <div class="footer-col">
         <div class="social-icons">
           <a href="https://wa.me/351910862703"><i class="fa-brands fa-whatsapp"></i></a>
           <a href="https://www.instagram.com/sweetdeisy.pt?igsh=MWJucDh6cW1veG1pdw=="><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://www.tiktok.com/@sweetdeisy4"><i class="fa-brands fa-tiktok"></i></a> 
-        </div> 
+          <a href="https://www.tiktok.com/@sweetdeisy4"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
         <br>
-        <div class="copyright" id="copyright">© 2026 SweetDeisy. Todos os direitos reservados.</div>
+        <div class="copyright" id="copyright">© 2026 Sweet Deisy. Todos os direitos reservados.</div>
       </div>
     </footer>
 
   </div>
 
+  <!-- ══════════════════════════════════════
+       MODAL DE SUBSCRIÇÃO
+  ══════════════════════════════════════ -->
+  <div id="subscribe-modal" role="dialog" aria-modal="true" aria-label="Subscrição">
+    <div class="modal-box">
+      <p class="modal-title">Sweet Deisy</p>
+      <p class="modal-sub" id="modal-sub-text">Recebe novidades, promoções e novos produtos em primeira mão.</p>
+
+      <input
+        type="email"
+        id="sub-email"
+        class="modal-input"
+        placeholder="O teu email"
+        onkeydown="if(event.key==='Enter') submitSubscription()"
+      >
+
+      <button class="modal-btn" id="modal-submit-btn" onclick="submitSubscription()">Subscrever</button>
+
+      <p class="modal-msg" id="sub-msg"></p>
+
+      <button class="modal-close" id="modal-close-btn" onclick="closeModal()">Fechar</button>
+    </div>
+  </div>
+
   <script>
+    /* ─────────────────────────────────────────
+       ⚠️  CONFIGURAÇÃO DO GOOGLE FORMS
+       1. Vai a forms.google.com e cria um form com um campo "Email"
+       2. Clica nos 3 pontos → "Obter link pré-preenchido"
+       3. Preenche qualquer email → copia o link gerado
+       4. Do link extrai:
+          - FORM_ID  → a parte longa entre /e/ e /formResponse
+          - ENTRY_ID → o parâmetro "entry.XXXXXXXXX"
+    ───────────────────────────────────────── */
+    const FORM_ID  = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"; // ← substitui
+    const ENTRY_ID = "entry.XXXXXXXXX";                                      // ← substitui
+
+    /* ── MODAL ── */
+    function openModal() {
+      const modal = document.getElementById("subscribe-modal");
+      modal.classList.add("open");
+      setTimeout(() => document.getElementById("sub-email").focus(), 100);
+      document.getElementById("sub-msg").textContent = "";
+      document.getElementById("sub-msg").style.color = "";
+    }
+
+    function closeModal() {
+      document.getElementById("subscribe-modal").classList.remove("open");
+      document.getElementById("sub-email").value = "";
+      document.getElementById("sub-msg").textContent = "";
+    }
+
+    // Fecha ao clicar fora
+    document.getElementById("subscribe-modal").addEventListener("click", function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    /* ── SUBMISSÃO ── */
+    function submitSubscription() {
+      const emailInput = document.getElementById("sub-email");
+      const msg        = document.getElementById("sub-msg");
+      const btn        = document.getElementById("modal-submit-btn");
+      const email      = emailInput.value.trim();
+
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        msg.style.color = "#c0392b";
+        msg.textContent = currentLang === "pt"
+          ? "Por favor, insere um email válido."
+          : "Please enter a valid email.";
+        emailInput.focus();
+        return;
+      }
+
+      btn.textContent = currentLang === "pt" ? "A enviar…" : "Sending…";
+      btn.disabled = true;
+
+      const url = `https://docs.google.com/forms/d/e/${FORM_ID}/formResponse?${ENTRY_ID}=${encodeURIComponent(email)}`;
+
+      fetch(url, { method: "POST", mode: "no-cors" })
+        .then(() => {
+          msg.style.color = "#2e7d32";
+          msg.innerHTML = currentLang === "pt"
+            ? '<i class="fas fa-check-circle"></i> Subscrito com sucesso! Obrigado'
+            : '<i class="fas fa-check-circle"></i> Subscribed successfully! Thank you';
+          emailInput.value = "";
+          btn.textContent = currentLang === "pt" ? "Subscrever" : "Subscribe";
+          btn.disabled = false;
+          setTimeout(closeModal, 2800);
+        })
+        .catch(() => {
+          msg.style.color = "#c0392b";
+          msg.textContent = currentLang === "pt"
+            ? "Erro ao subscrever. Tenta novamente."
+            : "Error. Please try again.";
+          btn.textContent = currentLang === "pt" ? "Subscrever" : "Subscribe";
+          btn.disabled = false;
+        });
+    }
+
+    /* ── TRADUÇÕES ── */
     const translations = {
       pt: {
-        
-        brand: "Sweet Deisy - Confeitaria",
-        location: "Marinha Grande — Leiria",
-        menu: "Menu",
-        order: "Encomende Aqui",
+        brand:     "Sweet Deisy - Confeitaria",
+        location:  "Marinha Grande — Leiria",
+        menu:      "Menu",
+        order:     "Encomende Aqui",
         subscribe: "Subscreva-se",
-        copyright: "© 2026 Sweet Deisy. Todos os direitos reservados."
+        copyright: "© 2026 Sweet Deisy. Todos os direitos reservados.",
+        modalSub:  "Recebe novidades, promoções e novos produtos em primeira mão.",
+        modalBtn:  "Subscrever",
+        modalClose:"Fechar",
+        placeholder: "O teu email"
       },
       en: {
-       
-        brand: "Sweet Deisy - Confectionery",
-        location: "Marinha Grande — Leiria",
-        menu: "Menu",
-        order: "Order Here",
+        brand:     "Sweet Deisy - Confectionery",
+        location:  "Marinha Grande — Leiria",
+        menu:      "Menu",
+        order:     "Order Here",
         subscribe: "Subscribe",
-        copyright: "© 2026 Sweet Deisy. All rights reserved."
+        copyright: "© 2026 Sweet Deisy. All rights reserved.",
+        modalSub:  "Get news, promotions and new products first.",
+        modalBtn:  "Subscribe",
+        modalClose:"Close",
+        placeholder: "Your email"
       }
     };
 
@@ -305,19 +434,21 @@
 
     function changeLang() {
       currentLang = currentLang === "pt" ? "en" : "pt";
+      const t = translations[currentLang];
 
-    
-      document.querySelector(".brand-title").textContent = translations[currentLang].brand;
-      document.getElementById("location-text").textContent = translations[currentLang].location;
-      document.getElementById("menu-btn").textContent = translations[currentLang].menu;
-      document.getElementById("order-btn").textContent = translations[currentLang].order;
-       document.getElementById("subscribe-btn").textContent = translations[currentLang].subscribe;
-      document.getElementById("copyright").textContent = translations[currentLang].copyright;
+      document.querySelector(".brand-title").textContent       = t.brand;
+      document.getElementById("location-text").textContent     = t.location;
+      document.getElementById("menu-btn").textContent          = t.menu;
+      document.getElementById("order-btn").textContent         = t.order;
+      document.getElementById("subscribe-btn").textContent     = t.subscribe;
+      document.getElementById("copyright").textContent         = t.copyright;
+      document.getElementById("modal-sub-text").textContent    = t.modalSub;
+      document.getElementById("modal-submit-btn").textContent  = t.modalBtn;
+      document.getElementById("modal-close-btn").textContent   = t.modalClose;
+      document.getElementById("sub-email").placeholder         = t.placeholder;
 
-      const langBtn = document.querySelector(".lang");
-      if (langBtn) langBtn.textContent = currentLang.toUpperCase();
+      document.querySelector(".lang").textContent = currentLang.toUpperCase();
     }
   </script>
 </body>
-
 </html>
