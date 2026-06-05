@@ -261,6 +261,7 @@
     <section class="actions" aria-label="Ações">
       <a href="menu.html" target="_blank" class="btn" id="menu-btn">Menu</a>
       <a href="https://wa.me/351910862703" target="_blank" class="btn" id="order-btn">Encomende Aqui</a>
+      <a href="menu.html" target="_blank" class="btn" id="subscribe-btn">Subscreva-se</a>
     </section>
 
     <!-- Footer -->
@@ -286,6 +287,7 @@
         location: "Marinha Grande — Leiria",
         menu: "Menu",
         order: "Encomende Aqui",
+        subscribe: "Subscreva-se",
         copyright: "© 2025 Sweet Deisy. Todos os direitos reservados."
       },
       en: {
@@ -294,6 +296,7 @@
         location: "Marinha Grande — Leiria",
         menu: "Menu",
         order: "Order Here",
+        subscribe: "Subscribe"
         copyright: "© 2025 Sweet Deisy. All rights reserved."
       }
     };
@@ -308,6 +311,7 @@
       document.getElementById("location-text").textContent = translations[currentLang].location;
       document.getElementById("menu-btn").textContent = translations[currentLang].menu;
       document.getElementById("order-btn").textContent = translations[currentLang].order;
+       document.getElementById("subscribe-btn").textContent = translations[currentLang].subscribe;
       document.getElementById("copyright").textContent = translations[currentLang].copyright;
 
       const langBtn = document.querySelector(".lang");
